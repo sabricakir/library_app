@@ -1,0 +1,2 @@
+class YayinEvi < ApplicationRecord
+end
