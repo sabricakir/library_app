@@ -1,12 +1,27 @@
 <div id="<%= dom_id book %>">
   <p>
     <strong>Name:</strong>
-    <%= book.name %>
+    <%= book.name.titleize %>
   </p>
 
   <p>
     <strong>Page:</strong>
-    <%= book.page %>
+    <%= book.page%>
+  </p>
+
+  <p>
+    <strong>Author:</strong>
+    <%= book.author.name.titleize %>
+  </p>
+
+  <p>
+    <strong>Book Type:</strong>
+    <%= book.book_type.typeName.titleize %>
+  </p>
+
+  <p>
+    <strong>Publisher:</strong>
+    <%= book.publisher.name.titleize %>
   </p>
 
 </div>
