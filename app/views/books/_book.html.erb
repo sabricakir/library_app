@@ -24,4 +24,12 @@
     <%= book.publisher.name.titleize %>
   </p>
 
+  <p>
+    <%= link_to "Show this book", book %>
+  </p>
+  <%= turbo_frame_tag "edit_book" do%>
+    <%= link_to "Edit this book", edit_book_path(book)%>
+  <%end%>
+  
+  <%= button_to "Destroy this book", book, method: :delete %>
 </div>

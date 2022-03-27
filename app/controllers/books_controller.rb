@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.all.order(created_at: :desc)
   end
 
   # GET /books/1 or /books/1.json
@@ -17,6 +17,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+    @book = Book.find(params[:id])
   end
 
   # POST /books or /books.json
@@ -25,9 +26,22 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+        format.turbo_stream do
+          render turbo_stream:[
+            turbo_stream.update('new_book',partial:"books/form",locals:{book:Book.new}),
+            turbo_stream.prepend('books',partial:"books/book",locals:{book:@book}),
+            turbo_stream.update('book_counter',Book.count),
+            turbo_stream.update('notice',"Book #{@book.id} created")
+          ]
+        end
         format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
         format.json { render :show, status: :created, location: @book }
       else
+        format.turbo_stream do
+          render turbo_stream:[
+            turbo_stream.update('new_book',partial:"books/form",locals:{book:@book})
+          ]
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -38,9 +52,20 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update(@book,partial:"books/book",locals:{book:@book}),
+            turbo_stream.update('notice',"Book #{@book.id} updated")
+          ]
+        end
         format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
         format.json { render :show, status: :ok, location: @book }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(@book,
+                                                  partial:"book/form",
+                                                  locals:{book:@book})
+        end
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
@@ -52,6 +77,11 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
+      format.turbo_stream {render turbo_stream: [
+        turbo_stream.remove(@book),
+        turbo_stream.update('book_counter',Book.count),
+        turbo_stream.update('notice',"Book #{@book.id} destroyed")] 
+        }
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
       format.json { head :no_content }
     end
