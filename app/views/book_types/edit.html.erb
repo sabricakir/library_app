@@ -1,0 +1,11 @@
+<h1>Editing book_type</h1>
+
+<%=turbo_frame_tag "edit_book_type" do%>
+<%= render "form", book_type: @book_type %>
+<%end%>
+<br>
+
+<div>
+  <%= link_to "Show this book_type", @book_type %> |
+  <%= link_to "Back to book_types", book_types_path %>
+</div>

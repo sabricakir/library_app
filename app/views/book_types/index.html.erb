@@ -1,0 +1,15 @@
+<p style="color: green"><span id="book_type_notice"<%= notice %></p>
+
+<h1>There are <span id="book_type_counter"><%=BookType.count%></span> BookTypes Here</h1>
+
+<div id="new_book_type">
+  <%= render partial:"book_types/form",locals:{book_type:BookType.new}%>
+</div>
+
+<div id="book_types">
+  <% @book_types.each do |book_type| %>
+    <%= render book_type %>
+  <% end %>
+</div>
+
+<%= link_to "New book_type", new_book_type_path %>

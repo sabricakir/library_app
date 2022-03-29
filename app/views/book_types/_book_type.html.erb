@@ -1,0 +1,15 @@
+<div id="<%= dom_id book_type %>">
+  <p>
+    <strong>Name:</strong>
+    <%= book_type.typeName %>
+  </p>
+
+  <p>
+    <%= link_to "Show this book_type", book_type %>
+  </p>
+
+<%= turbo_frame_tag "edit_book_type" do%>
+  <%= link_to "Edit this book_type", edit_book_type_path(book_type) %>
+<%end%>
+<%= button_to "Destroy this book_type", book_type, method: :delete %>
+</div>
