@@ -1,0 +1,15 @@
+<div id="<%= dom_id publisher %>">
+  <p>
+    <strong>Name:</strong>
+    <%= publisher.name %>
+  </p>
+  
+  <p>
+    <%= link_to "Show this publisher", publisher %>
+  </p>
+
+<%= turbo_frame_tag "edit_publisher" do%>
+  <%= link_to "Edit this publisher", edit_publisher_path(publisher) %>
+<%end%>
+<%= button_to "Destroy this publisher", publisher, method: :delete %>
+</div>

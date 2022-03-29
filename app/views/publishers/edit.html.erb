@@ -1,0 +1,11 @@
+<h1>Editing publisher</h1>
+
+<%=turbo_frame_tag "edit_publisher" do%>
+<%= render "form", publisher: @publisher %>
+<%end%>
+<br>
+
+<div>
+  <%= link_to "Show this publisher", @publisher %> |
+  <%= link_to "Back to publishers", publishers_path %>
+</div>
