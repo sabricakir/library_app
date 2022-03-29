@@ -1,0 +1,11 @@
+<h1>Editing author</h1>
+
+<%=turbo_frame_tag "edit_author" do%>
+<%= render "form", author: @author %>
+<%end%>
+<br>
+
+<div>
+  <%= link_to "Show this author", @author %> |
+  <%= link_to "Back to authors", authors_path %>
+</div>

@@ -31,7 +31,7 @@ class BooksController < ApplicationController
             turbo_stream.update('new_book',partial:"books/form",locals:{book:Book.new}),
             turbo_stream.prepend('books',partial:"books/book",locals:{book:@book}),
             turbo_stream.update('book_counter',Book.count),
-            turbo_stream.update('notice',"Book #{@book.id} created")
+            turbo_stream.update('book_notice',"Book #{@book.id} created")
           ]
         end
         format.html { redirect_to book_url(@book), notice: "Book was successfully created." }
@@ -55,7 +55,7 @@ class BooksController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update(@book,partial:"books/book",locals:{book:@book}),
-            turbo_stream.update('notice',"Book #{@book.id} updated")
+            turbo_stream.update('book_notice',"Book #{@book.id} updated")
           ]
         end
         format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
@@ -63,7 +63,7 @@ class BooksController < ApplicationController
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(@book,
-                                                  partial:"book/form",
+                                                  partial:"books/form",
                                                   locals:{book:@book})
         end
         format.html { render :edit, status: :unprocessable_entity }
@@ -80,7 +80,7 @@ class BooksController < ApplicationController
       format.turbo_stream {render turbo_stream: [
         turbo_stream.remove(@book),
         turbo_stream.update('book_counter',Book.count),
-        turbo_stream.update('notice',"Book #{@book.id} destroyed")] 
+        turbo_stream.update('book_notice',"Book #{@book.id} destroyed")] 
         }
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
       format.json { head :no_content }

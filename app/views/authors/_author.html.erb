@@ -1,0 +1,25 @@
+<div id="<%= dom_id author %>">
+  <p>
+    <strong>Name:</strong>
+    <%= author.name %>
+  </p>
+
+  <p>
+    <strong>Age:</strong>
+    <%= author.age %>
+  </p>
+
+  <p>
+    <strong>Birthplace:</strong>
+    <%= author.birthPlace %>
+  </p>
+
+  <p>
+    <%= link_to "Show this author", author %>
+  </p>
+
+<%= turbo_frame_tag "edit_author" do%>
+  <%= link_to "Edit this author", edit_author_path(author) %>
+<%end%>
+<%= button_to "Destroy this author", author, method: :delete %>
+</div>
