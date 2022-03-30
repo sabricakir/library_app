@@ -4,6 +4,39 @@
     <%= book_type.typeName %>
   </p>
 
+    <% bookTypeBooks = []
+       book_type.books.each{|book| bookTypeBooks.push(book.name) if !bookTypeBooks.include?(book.name)}
+       bookTypeBooks.join(",")
+    %>
+    <%if bookTypeBooks.length>0 %>
+      <strong>Books Which are Book Type is <%=book_type.typeName%></strong>
+        <p>
+          <%=bookTypeBooks%>
+        </p>
+    <%end%>
+        
+    <% bookTypePublishers = []
+       book_type.publishers.each{|publisher| bookTypePublishers.push(publisher.name) if !bookTypePublishers.include?(publisher.name)}
+       bookTypePublishers.join(",")
+    %>
+    <%if bookTypePublishers.length>0 %>
+      <strong>Publishers Who are Published <%=book_type.typeName%> Books</strong>
+        <p>
+          <%=bookTypePublishers%>
+        </p>
+    <%end%>
+
+    <% bookTypeAuthors = []
+       book_type.authors.each{|author| bookTypeAuthors.push(author.name) if !bookTypeAuthors.include?(author.name)}
+       bookTypeAuthors.join(",")
+    %>
+    <%if bookTypeAuthors.length>0 %>
+      <strong>Authors Who are Wrote <%=book_type.typeName%> Books</strong>
+        <p>
+          <%=bookTypeAuthors%>
+        </p>
+    <%end%>   
+
   <p>
     <%= link_to "Show this book_type", book_type %>
   </p>

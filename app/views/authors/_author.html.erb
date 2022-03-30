@@ -14,6 +14,39 @@
     <%= author.birthPlace %>
   </p>
 
+    <% authorBooks = []
+       author.books.each{|book| authorBooks.push(book.name) if !authorBooks.include?(book.name)}
+       authorBooks.join(",")
+    %>
+    <%if authorBooks.length>0 %>
+      <strong><%=author.name%>'s Books:</strong>
+        <p>
+          <%=authorBooks%>
+        </p>
+    <%end%>
+        
+    <% authorPublishers = []
+       author.publishers.each{|publisher| authorPublishers.push(publisher.name) if !authorPublishers.include?(publisher.name)}
+       authorPublishers.join(",")
+    %>
+    <%if authorPublishers.length>0 %>
+      <strong><%=author.name%>'s Contracted Publishers:</strong>
+        <p>
+          <%=authorPublishers%>
+        </p>
+    <%end%>
+
+    <% authorBookTypes = []
+       author.book_types.each{|bookType| authorBookTypes.push(bookType.typeName) if !authorBookTypes.include?(bookType.typeName)}
+       authorBookTypes.join(",")
+    %>
+    <%if authorBookTypes.length>0 %>
+      <strong><%=author.name%>'s Wrote Book Types:</strong>
+        <p>
+          <%=authorBookTypes%>
+        </p>
+    <%end%>            
+
   <p>
     <%= link_to "Show this author", author %>
   </p>

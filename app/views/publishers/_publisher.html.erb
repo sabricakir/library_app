@@ -4,9 +4,42 @@
     <%= publisher.name %>
   </p>
   
+    <% publisherBooks = []
+       publisher.books.each{|book| publisherBooks.push(book.name) if !publisherBooks.include?(book.name)}
+       publisherBooks.join(",")
+    %>
+    <%if publisherBooks.length>0 %>
+      <strong><%=publisher.name %> Published Books</strong>
+        <p>
+          <%=publisherBooks%>
+        </p>
+    <%end%>
+        
+    <% publisherAuthors = []
+       publisher.authors.each{|author| publisherAuthors.push(author.name) if !publisherAuthors.include?(author.name)}
+       publisherAuthors.join(",")
+    %>
+    <%if publisherAuthors.length>0 %>
+      <strong><%=publisher.name %> Contracted Authors</strong>
+        <p>
+          <%=publisherAuthors%>
+        </p>
+    <%end%>
+
+    <% publisherBookTypes = []
+       publisher.book_types.each{|bookType| publisherBookTypes.push(bookType.typeName) if !publisherBookTypes.include?(bookType.typeName)}
+       publisherBookTypes.join(",")
+    %>
+    <%if publisherBookTypes.length>0 %>
+      <strong><%=publisher.name %> Published Book Types</strong>
+        <p>
+          <%=publisherBookTypes%>
+        </p>
+    <%end%> 
+
   <p>
     <%= link_to "Show this publisher", publisher %>
-  </p>
+  </p>  
 
 <%= turbo_frame_tag "edit_publisher" do%>
   <%= link_to "Edit this publisher", edit_publisher_path(publisher) %>
