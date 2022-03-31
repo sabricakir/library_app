@@ -46,7 +46,7 @@ BookType.all.each{|bookType| bookTypeHash[bookType.typeName] = bookType.id}
     <%= form.select :publisher_id, options_for_select(publisherHash)%>
   </div>
 
-  <div>
+  <div class="pt-3">
     <%= form.submit %>
   </div>
 <% end %>

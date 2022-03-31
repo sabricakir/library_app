@@ -47,12 +47,23 @@
         </p>
     <%end%>            
 
-  <p>
-    <%= link_to "Show this author", author %>
-  </p>
+  <div class="d-flex flex-column justify-content-lg-between" style="width:25rem;">
 
-<%= turbo_frame_tag "edit_author" do%>
-  <%= link_to "Edit this author", edit_author_path(author) %>
-<%end%>
-<%= button_to "Destroy this author", author, method: :delete %>
+  <div class="d-flex align-items-center">
+    <p class="pe-3">
+      <%= link_to "Show this author", author %>
+    </p>
+
+    <p>
+      <%= turbo_frame_tag "edit_author" do%>
+        <%= link_to "Edit this author", edit_author_path(author) %>
+      <%end%>
+    </p>
+
+  </div>
+
+
+  <div> <%= button_to "Destroy this author", author, method: :delete %> </div>
+  </div>
+  
 </div>

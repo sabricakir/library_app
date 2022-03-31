@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+html{
+    font-family: 'Roboto', sans-serif !important;
+}
+a{
+    text-decoration: none;
+    color:#5C636A;
+}
+a:hover{
+    color:#1576c5;
+}
+input[type=submit],button{
+    background-color: #1576c5;
+    color:white;
+    padding:0.5rem;
+    border-radius: 5px;
+    border:1px solid #1576c5;
+    margin-bottom: 0.5rem;
+}
+input[type=submit]:hover,button:hover{
+    background-color: white;
+    color:#1576c5;
+    transition: ease-in 0.2s;
+
+}

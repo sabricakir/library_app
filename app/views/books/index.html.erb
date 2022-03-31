@@ -1,16 +1,29 @@
-<p style="color: green" id="book_notice"><%= notice %></p>
+<div class="container-lg">
+  <p style="color: green;text-align:center;" id="book_notice"><%= notice %></p>
 
-<h1>There are <span id="book_counter"><%=Book.count%></span> Books Here</h1>
+  <h1 style="text-align:center;">There are <span id="book_counter"><%=Book.count%></span> Books Here</h1>
 
-<div id="new_book">
-  <%= render partial:"books/form",locals:{book:Book.new}%>
+  <div class="row pt-2">
+    
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-lg- center">
+      <div id="new_book">
+        <h2>Create a New Book</h2>
+        <%= render partial:"books/form",locals:{book:Book.new}%>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 d-flex flex-column">
+      <div id="books">
+        <% @books.each do |book| %>
+          <%= render book %>
+        <% end %>
+      </div>    
+    </div>
+
+  </div>
+
 </div>
 
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-  <% end %>
-</div>
 
-<div><%= link_to "New book", new_book_path %></div>
+

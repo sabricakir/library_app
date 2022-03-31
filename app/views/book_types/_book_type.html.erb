@@ -36,13 +36,24 @@
           <%=bookTypeAuthors%>
         </p>
     <%end%>   
+    
+  <div class="d-flex flex-column justify-content-lg-between" style="width:25rem;">
 
-  <p>
-    <%= link_to "Show this book_type", book_type %>
-  </p>
+  <div class="d-flex align-items-center">
+    <p class="pe-3">
+      <%= link_to "Show this book_type", book_type %>
+    </p>
 
-<%= turbo_frame_tag "edit_book_type" do%>
-  <%= link_to "Edit this book_type", edit_book_type_path(book_type) %>
-<%end%>
-<%= button_to "Destroy this book_type", book_type, method: :delete %>
+    <p>
+      <%= turbo_frame_tag "edit_book_type" do%>
+        <%= link_to "Edit this book_type", edit_book_type_path(book_type) %>
+      <%end%>
+    </p>
+
+  </div>
+
+
+  <div> <%= button_to "Destroy this book_type", book_type, method: :delete %> </div>
+  </div>
+
 </div>

@@ -24,12 +24,23 @@
     <%= book.publisher.name %>
   </p>
 
-  <p>
-    <%= link_to "Show this book", book %>
-  </p>
-  <%= turbo_frame_tag "edit_book" do%>
-    <%= link_to "Edit this book", edit_book_path(book)%>
-  <%end%>
-  
-  <%= button_to "Destroy this book", book, method: :delete %>
+  <div class="d-flex flex-column justify-content-lg-between" style="width:25rem;">
+
+  <div class="d-flex align-items-center">
+    <p class="pe-3">
+      <%= link_to "Show this book", book %>
+    </p>
+
+    <p>
+      <%= turbo_frame_tag "edit_book" do%>
+        <%= link_to "Edit this book", edit_book_path(book)%>
+      <%end%>
+    </p>
+
+  </div>
+
+
+  <div> <%= button_to "Destroy this book", book, method: :delete %> </div>
+  </div>
+
 </div>

@@ -1,15 +1,30 @@
-<p style="color: green"><span id="author_notice"<%= notice %></p>
+<div class="container-lg">
+  <p style="color: green;text-align:center;"><span id="author_notice"<%= notice %></p>
 
-<h1>There are <span id="author_counter"><%=Author.count%></span> Authors Here</h1>
+  <h1 style="text-align:center">There are <span id="author_counter"><%=Author.count%></span> Authors Here</h1>
 
-<div id="new_author">
-  <%= render partial:"authors/form",locals:{author:Author.new}%>
+
+  <div class="row pt-2">
+    
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-lg- center">
+      <div id="new_author">
+        <h2>Create a New Author</h2>
+        <%= render partial:"authors/form",locals:{author:Author.new}%>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 d-flex flex-column">
+      <div id="authors">
+        <% @authors.each do |author| %>
+          <%= render author %>
+        <% end %>
+      </div>    
+    </div>
+
+  </div>
+
 </div>
 
-<div id="authors">
-  <% @authors.each do |author| %>
-    <%= render author %>
-  <% end %>
-</div>
 
-<%= link_to "New author", new_author_path %>
+
+

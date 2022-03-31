@@ -1,15 +1,26 @@
-<p style="color: green"><span id="book_type_notice"<%= notice %></p>
+<div class="container-lg">
+  <p style="color: green;text-align:center;"><span id="book_type_notice"<%= notice %></p>
 
-<h1>There are <span id="book_type_counter"><%=BookType.count%></span> BookTypes Here</h1>
+  <h1 align="center">There are <span id="book_type_counter"><%=BookType.count%></span> BookTypes Here</h1>
 
-<div id="new_book_type">
-  <%= render partial:"book_types/form",locals:{book_type:BookType.new}%>
+
+  <div class="row pt-2">
+    
+    <div class="col-12 col-lg-6 d-flex flex-column align-items-lg- center">
+      <h2>Create a New Book Type </h2>
+      <div id="new_book_type">
+        <%= render partial:"book_types/form",locals:{book_type:BookType.new}%>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 d-flex flex-column">
+      <div id="book_types">
+        <% @book_types.each do |book_type| %>
+          <%= render book_type %>
+        <% end %>
+      </div>   
+    </div>
+
+  </div>
+
 </div>
-
-<div id="book_types">
-  <% @book_types.each do |book_type| %>
-    <%= render book_type %>
-  <% end %>
-</div>
-
-<%= link_to "New book_type", new_book_type_path %>
