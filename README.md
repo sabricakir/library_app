@@ -22,8 +22,7 @@ Associationlar da şu şekilde :
 
 Kitap ile diğer modeller arasında belongs_to ilişkisi var iken diğer modellerin ise kendi içinde has_many ve has_many:through ilişkileri bulunuyor. has_many:through sayesinde ise yazarın anlaştığı yayın evleri veya yazarın yayınlamış olduğu kitap türlerine de erişim imkanı bulabiliyorum.
 
-![author-association-array](https://user-images.githubusercontent.com/84380549/161302795-b7f376e0-2e7a-40e6-bf84-bda5a2e61608.png)
-
+![authors-association-code](https://user-images.githubusercontent.com/84380549/161307825-60c9aae6-add1-486b-8a9f-c6cbaaa448a3.png)
 ![association-author-to-others](https://user-images.githubusercontent.com/84380549/161302673-d3bb377e-a1f8-4847-9a01-898af140eb7c.png)
 
 Validation kullanımına örnek olarak yazar modelindeki validationları incelediğimizde eğer validation'lara uymayan bir şekilde kayıt eklemeye çalışırsak şu şekilde hata alıyoruz. Yine aynı şekilde diğer modeller için validation kullanımları da bu örneğe benzer şekilde gerçekleşiyor.
